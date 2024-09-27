@@ -5,7 +5,9 @@ class Program
     static void Main(string[] args)
     {
         Random rnd = new Random();
-        
+        const int FIRST = 1;
+        const int SECOND = 2;
+        const int THIRD  = 3;
 
         int numberOfGuesses = 1;
         int numberGuess = 0;
@@ -17,15 +19,15 @@ class Program
         
         while (numberOfGuesses < 4 || numberGuess != correctGuess )
         {
-            if (numberOfGuesses == 1)
+            if (numberOfGuesses == FIRST)
             {
                 Console.WriteLine("Please enter your first guess: ");
             }
-            if (numberOfGuesses == 2)
+            if (numberOfGuesses == SECOND)
             {
                 Console.WriteLine("Please enter your second guess: ");
             }
-            if (numberOfGuesses ==3)
+            if (numberOfGuesses == THIRD)
             {
                 Console.WriteLine("Please enter your final guess: ");
             }
