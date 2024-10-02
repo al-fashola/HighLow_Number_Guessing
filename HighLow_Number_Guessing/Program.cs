@@ -5,9 +5,10 @@ class Program
     static void Main(string[] args)
     {
         Random rnd = new Random();
+        const int MAX_GUESS = 10;
         const int FIRST = 1;
-        const int SECOND = 2;
-        const int THIRD  = 3;
+        
+        
 
         int numberOfGuesses = 1;
         int numberGuess = 0;
@@ -15,25 +16,25 @@ class Program
         
         //Console.WriteLine(correctGuess);
         
-        Console.WriteLine("Hello, let's play a game! You will be guessing a number between 1 and 100, you will have 3 tries");
+        Console.WriteLine($"Hello, let's play a game! You will be guessing a number between 1 and 100, you will have {MAX_GUESS} tries");
         
-        while (numberOfGuesses < 4 || numberGuess != correctGuess )
+        while (numberOfGuesses <= MAX_GUESS || numberGuess != correctGuess )
         {
             if (numberOfGuesses == FIRST)
             {
                 Console.WriteLine("Please enter your first guess: ");
             }
-            if (numberOfGuesses == SECOND)
+            if (numberOfGuesses > FIRST && numberOfGuesses < MAX_GUESS)
             {
-                Console.WriteLine("Please enter your second guess: ");
+                Console.WriteLine($"Please enter guess #{numberOfGuesses} : ");
             }
-            if (numberOfGuesses == THIRD)
+            if (numberOfGuesses == MAX_GUESS)
             {
                 Console.WriteLine("Please enter your final guess: ");
             }
             numberGuess = Convert.ToInt32(Console.ReadLine());
             
-            if (numberGuess != correctGuess && numberOfGuesses >= 3)
+            if (numberGuess != correctGuess && numberOfGuesses >= MAX_GUESS)
             {
                 Console.WriteLine("You lose!");
                 break;
