@@ -27,15 +27,18 @@ class Program
             {
                 Console.WriteLine("Please enter your First guess: ");
             }
-            if (numberOfGuesses > INITIALGUESS && numberOfGuesses < MAX_GUESSES)
-            {
-                Console.WriteLine($"Please enter guess #{numberOfGuesses} : ");
-            }
-            if (numberOfGuesses == MAX_GUESSES)
+            else if (numberOfGuesses == MAX_GUESSES)
             {
                 Console.WriteLine("Please enter your final guess: ");
             }
+            else /*if (numberOfGuesses > INITIALGUESS && numberOfGuesses < MAX_GUESSES)*/
+            {
+                Console.WriteLine($"Please enter guess #{numberOfGuesses} : ");
+            }
+            
             numberGuess = Convert.ToInt32(Console.ReadLine());
+            
+            // Win or lose end of game logic
             if (numberGuess == correctGuess)
             {
                 Console.WriteLine("You Won " + correctGuess + " is the right answer!");
@@ -44,18 +47,20 @@ class Program
             if (numberGuess != correctGuess && numberOfGuesses >= MAX_GUESSES)
             {
                 Console.WriteLine("You lose!");
+                Console.WriteLine($"The correct guess was {correctGuess}!");
                 break;
             }
            
+            //High/low proximity logic
             if (Math.Abs(numberGuess-correctGuess) <= CLOSE_PROXIMITY)
             {
                 Console.WriteLine("You're close!");
             }
-            if (numberGuess != correctGuess && numberGuess > correctGuess)
+            else if (numberGuess > correctGuess)
             {
                 Console.WriteLine("Too High!");
             }
-            if (numberGuess != correctGuess && numberGuess < correctGuess)
+            else /*(numberGuess < correctGuess)*/
             {
                 Console.WriteLine("Too low!");
             }
