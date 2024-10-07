@@ -6,7 +6,7 @@ class Program
     {
         Random rnd = new Random();
         const int MAX_GUESSES = 10;
-        const int FIRST = 1;
+        const int INITIALGUESS = 1;
         const int CLOSE_PROXIMITY = 5;
         const int LOW_GUESS_RANGE = 1;
         const int HIGH_GUESS_RANGE = 101;
@@ -19,15 +19,15 @@ class Program
         
         //Console.WriteLine(correctGuess);
         
-        Console.WriteLine($"Hello, let's play a game! You will be guessing a number between 1 and 100, you will have {MAX_GUESSES} tries");
+        Console.WriteLine($"Hello, let's play a game! You will be guessing a number between {LOW_GUESS_RANGE} and {HIGH_GUESS_RANGE-1}, you will have {MAX_GUESSES} tries");
         
-        while (numberOfGuesses <= MAX_GUESSES )
+        while (true /*numberOfGuesses <= MAX_GUESSES*/)
         {
-            if (numberOfGuesses == FIRST)
+            if (numberOfGuesses == INITIALGUESS)
             {
-                Console.WriteLine("Please enter your first guess: ");
+                Console.WriteLine("Please enter your INITIALGUESS guess: ");
             }
-            if (numberOfGuesses > FIRST && numberOfGuesses < MAX_GUESSES)
+            if (numberOfGuesses > INITIALGUESS && numberOfGuesses < MAX_GUESSES)
             {
                 Console.WriteLine($"Please enter guess #{numberOfGuesses} : ");
             }
@@ -36,17 +36,17 @@ class Program
                 Console.WriteLine("Please enter your final guess: ");
             }
             numberGuess = Convert.ToInt32(Console.ReadLine());
-            
-            if (numberGuess != correctGuess && numberOfGuesses >= MAX_GUESSES)
-            {
-                Console.WriteLine("You lose!");
-                break;
-            }
             if (numberGuess == correctGuess)
             {
                 Console.WriteLine("You Won " + correctGuess + " is the right answer!");
                 break;
             }
+            if (numberGuess != correctGuess && numberOfGuesses >= MAX_GUESSES)
+            {
+                Console.WriteLine("You lose!");
+                break;
+            }
+           
             if (Math.Abs(numberGuess-correctGuess) <= CLOSE_PROXIMITY)
             {
                 Console.WriteLine("You're close!");
