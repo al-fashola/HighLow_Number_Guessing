@@ -25,7 +25,7 @@ class Program
         {
             if (numberOfGuesses == INITIALGUESS)
             {
-                Console.WriteLine("Please enter your INITIALGUESS guess: ");
+                Console.WriteLine("Please enter your First guess: ");
             }
             if (numberOfGuesses > INITIALGUESS && numberOfGuesses < MAX_GUESSES)
             {
