@@ -10,8 +10,6 @@ class Program
         const int CLOSE_PROXIMITY = 5;
         const int LOW_GUESS_RANGE = 1;
         const int HIGH_GUESS_RANGE = 101;
-        
-        
 
         int numberOfGuesses = 1;
         int numberGuess = 0;
@@ -21,7 +19,8 @@ class Program
         
         Console.WriteLine($"Hello, let's play a game! You will be guessing a number between {LOW_GUESS_RANGE} and {HIGH_GUESS_RANGE-1}, you will have {MAX_GUESSES} tries");
         
-        while (true /*numberOfGuesses <= MAX_GUESSES*/)
+        // while the number or guesses is below MAX_GUESSES continue to run the loop 
+        while (true) 
         {
             if (numberOfGuesses == INITIALGUESS)
             {
@@ -31,7 +30,7 @@ class Program
             {
                 Console.WriteLine("Please enter your final guess: ");
             }
-            else /*if (numberOfGuesses > INITIALGUESS && numberOfGuesses < MAX_GUESSES)*/
+            else 
             {
                 Console.WriteLine($"Please enter guess #{numberOfGuesses} : ");
             }
@@ -41,7 +40,7 @@ class Program
             // Win or lose end of game logic
             if (numberGuess == correctGuess)
             {
-                Console.WriteLine("You Won " + correctGuess + " is the right answer!");
+                Console.WriteLine($"You Won in {numberOfGuesses} tries, {correctGuess} is the right answer!");
                 break;
             }
             if (numberGuess != correctGuess && numberOfGuesses >= MAX_GUESSES)
@@ -49,18 +48,19 @@ class Program
                 Console.WriteLine("You lose!");
                 Console.WriteLine($"The correct guess was {correctGuess}!");
                 break;
-            }
+            } 
+            
            
             //High/low proximity logic
             if (Math.Abs(numberGuess-correctGuess) <= CLOSE_PROXIMITY)
             {
                 Console.WriteLine("You're close!");
             }
-            else if (numberGuess > correctGuess)
+            if (numberGuess > correctGuess)
             {
                 Console.WriteLine("Too High!");
             }
-            else /*(numberGuess < correctGuess)*/
+            if (numberGuess < correctGuess)
             {
                 Console.WriteLine("Too low!");
             }
